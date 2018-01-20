@@ -1,4 +1,5 @@
 var request = require('request');
+const URL = `https://api.themoviedb.org/4/list/{list_id}?page=1&api_key=${process.env.API_KEY}&sort_by=release_date.asc`;
 
 function getTweets(req, res) {
     var client = new Twitter({
