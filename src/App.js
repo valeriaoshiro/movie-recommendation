@@ -25,7 +25,7 @@ class App extends Component {
       method: 'GET'
     })
     .then(res => res.json())
-    .then(data => this.setState({tweets: data.users[0].name}))
+    .then(data => this.setState({tweets: data.users.name}))
   }
 
   handleSearch = (e) => {

@@ -19,13 +19,13 @@ function getTweets(req, res) {
     
     client.get('friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error, tweets, response) {
     if (!error) {
-        //cursor = tweets.next_cursor;
-        //console.log("////////", tweets.next_cursor, tweets.users.length);
-        //console.log("*********users ", tweets.users);
-        // tweets.users.forEach(function(user){
-        //     if(user.verified) celebrities.push(user.name);
-        //     console.log("*********", celebrities);
-        // })
+        cursor = tweets.next_cursor;
+        console.log("////////", tweets.next_cursor, tweets.users.length);
+        console.log("*********users ", tweets.users);
+        tweets.users.forEach(function(user){
+            if(user.verified) celebrities.push(user.name);
+            console.log("*********", celebrities);
+        })
         // console.log('TWEETS', tweets);
         // return tweets;
         console.log('REQUEST', req)
