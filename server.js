@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
 
+app.use('/tweets', require('./routes/routes'));
+
+
 // ===============
 
 var client = new Twitter({
