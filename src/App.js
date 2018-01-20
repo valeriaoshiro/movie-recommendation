@@ -25,7 +25,16 @@ class App extends Component {
       method: 'GET'
     })
     .then(res => res.json())
-    .then(data => this.setState({tweets: data.users[0].name}))
+    .then(data => {
+      var temp = [];
+      data.users.forEach(function(user){
+          if(user.verified) {
+            temp.push(user.name);
+          }
+      })
+      this.setState({tweets: temp})
+    })
+
   }
 
   handleSearch = (e) => {
