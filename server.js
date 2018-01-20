@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
 
+app.use('/tweets', require('./routes/routes'));
+
+
 // ===============
 
 var client = new Twitter({
@@ -27,6 +30,7 @@ var client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 var params = {screen_name: 'valeriaoshiro'};
+
 var cursor = -1;
 var api_path = 'friends/list.json?screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200';
 var celebrities = [];
@@ -55,6 +59,7 @@ client.get('friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&
 //                 console.log(error2);
 //             }
 //         });
+
 
 // =============
 
