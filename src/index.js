@@ -7,4 +7,5 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
-var x = 'string'
+var x = 'string';
+var y = 'string2';
