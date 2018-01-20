@@ -59,3 +59,11 @@ nav {
   float: left;
   font-size: 80px;
 }
+
+form {
+  margin: 80px !important;
+}
+
+input {
+  text-align: center;
+}
