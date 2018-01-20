@@ -22,10 +22,10 @@ class App extends Component {
   handleTweets = () => {
     // if (e) e.preventDefault();
     fetch('/tweets', {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json'}
+      method: 'GET'
     })
     
+    .then(res => console.log(res))
     // .then(res => JSON.stringify(res))
     // .then(data => this.setState({tweets: data}))
   }

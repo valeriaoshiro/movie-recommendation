@@ -22,6 +22,7 @@ app.use('/', require('./routes/routes'));
 
 // ===============
 
+
 // var client = new Twitter({
 //   consumer_key: process.env.CONSUMER_KEY,
 //   consumer_secret: process.env.CONSUMER_SECRET,
@@ -47,6 +48,7 @@ app.use('/', require('./routes/routes'));
 //     console.log(error);
 //   }
 // });
+
 //console.log(celebrities);
 
 // client.get('friends/list.json?cursor=' + cursor + '&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error2, tweets2, response2) {
