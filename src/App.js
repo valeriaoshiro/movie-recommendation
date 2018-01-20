@@ -6,7 +6,6 @@ import './App.css';
 
 import {Navbar, NavItem, Col, Card, Row, CardPanel, CardTitle} from 'react-materialize';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,9 +22,12 @@ class App extends Component {
   handleTweets = () => {
     // if (e) e.preventDefault();
     fetch('/tweets', {
-      method: 'GET'
-    }).then(res => JSON.stringify(res))
-    .then(data => this.setState({tweets: data}))
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+    })
+    
+    // .then(res => JSON.stringify(res))
+    // .then(data => this.setState({tweets: data}))
   }
 
   handleSearch = (e) => {
@@ -34,7 +36,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.handleTweets();
+    this.handleTweets();
   }
 
   render() {
