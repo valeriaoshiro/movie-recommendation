@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var twitterAPI = require('node-twitter-api');
 
 require('dotenv').config();
 //require('./config/database');
@@ -15,6 +16,43 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(bodyParser.json());
+
+var twitter = new twitterAPI({
+    consumerKey: 'lbSpXNPQmQpbuEfAGFZn8VTwO',
+    consumerSecret: 'yk74dXSJ6rFAVMwhZAEaAWCwWRXcrVpDYKd4RjclhJks76Z5c1',
+    //callback: 'http://localhost:3000/'
+});
+
+var rToken, rTokenSecret, aToken, aTokenSecret;
+
+app.get("/", function(req, res) {
+    twitter.getRequestToken(function(error, requestToken, requestTokenSecret, results){
+        if (error) {
+            console.log("Error getting OAuth request token : " + error);
+            console.log(results);
+        } else {
+            rToken = requestToken;
+            rTokenSecret = requestTokenSecret;
+            res.redirect("https://twitter.com/oauth/authenticate?oauth_token="+rToken);
+
+            console.log('request')
+            console.log(rToken, rTokenSecret);
+            console.log(results);
+        }
+    });
+});
+
+// twitter.getAccessToken(rToken, rTokenSecret, oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         // aToken = accessToken;
+//         // aTokenSecret = accessTokenSecret;
+
+//         // console.log('Access');
+//         // console.log(aToken, aTokenSecret);
+//     }
+// });
 
 //app.use(require('./config/auth'));
 
