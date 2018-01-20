@@ -47,6 +47,13 @@ class App extends Component {
         <h2 className='brand-logo center'>Movie Match</h2>
         <h3 className="Right"> 🍭 🍿 </h3>
       </nav>
+
+      <Home tweets={this.state.tweets}
+        handleSearch={this.handleSearch}
+        updateSearchValue={this.updateSearchValue}
+        search={this.state.search} 
+      />
+
       <Row>
           <Col s={12} m={4}>
           <Card className='small'
@@ -70,10 +77,6 @@ class App extends Component {
         </Card>
           </Col>
       </Row>
-      <Home tweets={this.state.tweets}
-        handleSearch={this.handleSearch}
-        updateSearchValue={this.updateSearchValue}
-        search={this.state.search} />
       </div>
     );
   }
