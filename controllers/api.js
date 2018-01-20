@@ -26,12 +26,15 @@ function getTweets(req, res) {
         //     if(user.verified) celebrities.push(user.name);
         //     console.log("*********", celebrities);
         // })
-        console.log('TWEETS', tweets);
-        return tweets;
+        // console.log('TWEETS', tweets);
+        // return tweets;
+        console.log('REQUEST', req)
+        return res.send(tweets);
     } else {
         console.log(error);
     }
     });
+
 }
 
 function getMovies(req, res) {
