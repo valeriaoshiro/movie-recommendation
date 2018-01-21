@@ -19,10 +19,11 @@ class App extends Component {
     this.setState({search: e.target.value})
   }
 
-  handleTweets = () => {
-    // if (e) e.preventDefault();
-    fetch('/tweets', {
-      method: 'GET'
+  handleTweets = (e) => {
+    if (e) e.preventDefault();
+    fetch(`/tweets`, {
+      method: 'GET',
+      params: this.state.search
     })
     .then(res => res.json())
     .then(data => {
@@ -38,8 +39,24 @@ class App extends Component {
   }
 
   handleSearch = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
+    if (e) e.preventDefault();
+    console.log('e', e.target.input)
+
+    fetch(`/getTweets?tweet=${this.state.search}`, {
+      method: 'GET'
+    })
+    
+    // .then(res => res.json())
+    // .then(data => this.setState({}))
+
+    // fetch('/getTweets', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     search: this.state.search
+    //   })
+    // })
+    
+    // .then(response => response.json())
   }
 
   componentWillMount() {
